@@ -1,4 +1,4 @@
-vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#display
+﻿vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#display
 vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#rtp{sdp=rtsp://:8554/1}
 vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}}
 vlc -vvv file:///E:/testfiles/test.264 --demux=h264 --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}}
@@ -19,7 +19,7 @@ udp{dst=192.168.1.90:6000}
 
 :sout=#duplicate{dst=rtp{sdp=rtsp://:8554/1},dst=http{mux=ffmpeg{mux=flv},dst=:8080/live}} :sout-keep
 
-vlm�㲥
+vlm video on demand(vod)
 -vvv --sout=myRTP --color -I telnet --telnet-password videolan --rtsp-host 0.0.0.0 --rtsp-port 8554 --vlm-conf=vlm.conf --rtsp-timeout=-1
 
 
