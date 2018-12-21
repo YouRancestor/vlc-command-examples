@@ -1,0 +1,34 @@
+vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#display
+vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#rtp{sdp=rtsp://:8554/1}
+vlc -vvv file:///E:/testfiles/1.mkv --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}}
+vlc -vvv file:///E:/testfiles/test.264 --demux=h264 --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}}
+vlc -vvv file:///E:/testfiles/test.264 --demux=h264 --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}} --sout-rtp-mux=ts
+vlc -vvv file:///E:/testfiles/test.264 --demux=h264 --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}} --sout-rtp-mux=ps
+
+
+vlc tcp://192.168.1.20:9000 --demux=hevc --network-caching=100
+vlc -vvv tcp://192.168.1.21:9000 --demux=hevc --sout-all --sout-keep --sout=#duplicate{dst=display,dst=rtp{sdp=rtsp://:8554/1}} --network-caching=100
+
+
+
+vlc -vvv file:///E:/testfiles/test.264 --demux=h264 --sout-all --sout-keep --sout=#duplicate{dst=display,dst=udp{dst=192.168.1.90:6000}} --sout-rtp-mux=ps
+
+udp{dst=192.168.1.90:6000}
+
+
+
+:sout=#duplicate{dst=rtp{sdp=rtsp://:8554/1},dst=http{mux=ffmpeg{mux=flv},dst=:8080/live}} :sout-keep
+
+vlmµã²¥
+-vvv --sout=myRTP --color -I telnet --telnet-password videolan --rtsp-host 0.0.0.0 --rtsp-port 8554 --vlm-conf=vlm.conf --rtsp-timeout=-1
+
+
+rtsp://admin:Hk123456@192.168.10.102:554/h264/ch1/main/av_stream
+rtsp://admin:Hk123456@192.168.10.11:554/Streaming/Channels/101?transportmode=unicast
+
+
+:sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:duplicate{dst=rtp{sdp=rtsp://:8554/1},dst=display} :sout-keep
+
+
+:sout=#transcode{width=1920,vcodec=h264,vb=803,height=1080}:file{dst=F:/test_new.MP4}
+:sout=#transcode{width=1920,vcodec=ffmpeg{codec=h264},vb=803,height=1080}:file{dst=F:/test_new.MP4}
