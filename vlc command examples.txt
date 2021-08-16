@@ -32,3 +32,10 @@ rtsp://admin:Hk123456@192.168.10.11:554/Streaming/Channels/101?transportmode=uni
 
 :sout=#transcode{width=1920,vcodec=h264,vb=803,height=1080}:file{dst=F:/test_new.MP4}
 :sout=#transcode{width=1920,vcodec=ffmpeg{codec=h264},vb=803,height=1080}:file{dst=F:/test_new.MP4}
+
+# rtp
+# 服务
+:sout=#transcode{acodec=none}:rtp{dst=127.0.0.1,port=5004,sdp="file:///D:/test.sdp"}
+:sout=#transcode:rtp{dst=127.0.0.1,port=5004,sdp="file:///D:/test.sdp"}
+# 播放
+file:///D:/test.sdp
